@@ -1,12 +1,2 @@
-<h1>ユーザー</h1>
-<%= form_with(model: @user, local: true, url:confirm_action) do |f| %>  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "入力内容確認" %>
-<% end %>
+<h1>ユーザー情報入力</h1>
+<%= render 'form' %>

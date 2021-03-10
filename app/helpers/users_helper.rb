@@ -7,7 +7,6 @@ module UsersHelper
     end
   end
   def confirm_id
-    # ブログ新規投稿とアップデートに分岐したいが…
     unless @user.id?
       users_path
     else
