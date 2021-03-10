@@ -1,5 +1,5 @@
 <h3>入力内容確認画面</h3>
-<%= form_with(model: @user, local: true, url: users_path, action: "user" method: "post") do |f| %>
+<%= form_with(model: @user, local: true, url: confirm_id, method: confirm_request) do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
   <%= f.hidden_field :password %>

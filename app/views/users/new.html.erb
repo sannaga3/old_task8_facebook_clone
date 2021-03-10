@@ -1,5 +1,5 @@
 <h1>ユーザー</h1>
-<%= form_with(model: @user, local: true, url: confirm_users_path) do |f| %>  
+<%= form_with(model: @user, local: true, url:confirm_action) do |f| %>  
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :email %>
