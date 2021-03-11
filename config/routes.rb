@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create, :show, :edit, :destroy] do
+  resources :users, only: [:new, :create, :show, :edit, :update, :destroy] do
     collection do
       post :confirm
       patch :confirm

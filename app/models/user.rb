@@ -3,7 +3,15 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 1..20 }
   validates :email, presence: true, length: { in: 1..50 }, 
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :email, uniqueness: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  with_options on: :new_case do
+    validates :email, uniqueness: true
+    validates :password, presence: true
+    validates :password, length: { minimum: 6 }
+  end
+  with_options on: :edit_case do
+    with_options unless: proc { |s| s.password.blank? } do
+      validates :password, length: { minimum: 6 }
+    end
+  end
 end
