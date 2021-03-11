@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.id = params[:id]
     if @user.id?
-      binding.irb
       render :edit if @user.valid?(:edit_case)
     else
       render :new if @user.invalid?(:new_case)
@@ -46,6 +45,11 @@ class UsersController < ApplicationController
         render :edit
       end
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to new_user_path, notice: "ご利用ありがとうございました！登録情報を削除しました！"
   end
 
   private
