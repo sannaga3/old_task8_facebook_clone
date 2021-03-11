@@ -9,4 +9,13 @@ Rails.application.routes.draw do
       patch :confirm
     end
   end
+  resources :pictures do
+    collection do
+      post :confirm
+      patch :confirm
+    end
+    member do
+      patch :confirm
+    end
+  end
 end
