@@ -1,2 +1,13 @@
-<h1>Pictures#new</h1>
-<p>Find me in app/views/pictures/new.html.erb</p>
+<%= form_with(model: @post, local: true ,url: pictures_path) do |form| %>
+  <div class="picture_wrapper">
+    <div class="field">
+      <%= form.label :'コメント' %><br>
+      <%= form.text_area :comment %>
+      <br>
+    </div> 
+    <div class="picture_button">
+      <%= form.submit value="内容確認" %>
+      <%= link_to "一覧に戻る", pictures_path %>
+    </div>
+  </div>
+<% end %>
