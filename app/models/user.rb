@@ -14,4 +14,5 @@ class User < ApplicationRecord
       validates :password, length: { minimum: 6 }
     end
   end
+  has_many :pictures
 end
