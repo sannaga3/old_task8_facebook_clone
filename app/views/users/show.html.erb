@@ -1,5 +1,8 @@
 <h3>ユーザー情報一覧</h3>
 <p>名前:<%= @user.name %></p>
+<br>
+<%= link_to "投稿", new_picture_path %>
+<br>
 <%= link_to "編集", edit_user_path(@user.id) %>
 <%= link_to "戻る" ,  new_user_path %>
 <p>メールアドレス:<%= @user.email %></p>

@@ -1,12 +1,22 @@
-<%= form_with(model: @post, local: true ,url: pictures_path) do |form| %>
+<%= form_with(model: @picture, local: true ,url: confirm_pictures_path) do |f| %>
+  <% if @picture.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @picture.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
   <div class="picture_wrapper">
     <div class="field">
-      <%= form.label :'コメント' %><br>
-      <%= form.text_area :comment %>
-      <br>
+      <%= f.hidden_field :user %>
+      <%= f.label :'コメント' %><br>
+      <%= f.text_area :content %>
     </div> 
     <div class="picture_button">
-      <%= form.submit value="内容確認" %>
+      <%= f.submit value="内容確認" %>
       <%= link_to "一覧に戻る", pictures_path %>
     </div>
   </div>

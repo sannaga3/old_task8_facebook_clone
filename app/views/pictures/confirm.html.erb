@@ -1,0 +1,12 @@
+<%= form_with(model: @picture, local: true ,url: pictures_path) do |f| %>
+  <div class="picture_wrapper">
+    <div class="field">
+      <%= f.hidden_field :content %>
+      <p>コメント: <br><%= @picture.content %></p>
+    </div> 
+    <div class="picture_button">
+      <%= f.submit value="投稿" %>
+      <%= link_to "一覧に戻る", pictures_path %>
+    </div>
+  </div>
+<% end %>

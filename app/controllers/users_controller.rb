@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.id = params[:id]
     if @user.id?
-      render :edit if @user.valid?(:edit_case)
+      render :edit if @user.invalid?(:edit_case)
     else
       render :new if @user.invalid?(:new_case)
     end
@@ -35,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.new(user_params)
     @user.id = params[:id]
     if params[:back]
       render :edit

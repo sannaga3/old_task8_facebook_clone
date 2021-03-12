@@ -1,17 +1,28 @@
 class PicturesController < ApplicationController
   def index
-    @picture = Picture.all
+    @pictures = Picture.all
   end
 
   def new
     if params[:back]
-      @picture = Feed.new(feed_params)
+      @picture = Picture.new(picture_params)
     else
-      @picture = Feed.new
+      @picture = Picture.new
+    end
+  end
+
+  def confirm
+    @picture = params[:id] ? Picture.find(param[:id]) : Picture.new(picture_params)
+    @picture.user_id = current_user.id
+    if @picture.id?
+      render :edit and return if @picture.invalid?
+    else
+      render :new and return if @picture.invalid?
     end
   end
 
   def create
+
   end
 
   def edit
@@ -21,5 +32,10 @@ class PicturesController < ApplicationController
   end
 
   def show
+  end
+
+  private
+  def picture_params
+    params.require(:picture).permit(:content)
   end
 end
