@@ -6,12 +6,13 @@ class UsersController < ApplicationController
   end
   
   def confirm
-    @user = User.new(user_params)
-    @user.id = params[:id]
+    @user = params[:id] ? User.find(params[:id]) : User.new(user_params)
     if @user.id?
-      render :edit if @user.invalid?(:edit_case)
+      @user.assign_attributes(user_params)
+      render :edit and return if @user.invalid?(:edit_case)
     else
-      render :new if @user.invalid?(:new_case)
+      @user.id =  params[:id] ? params[:id] : nil
+      render :new if @user.invalid?
     end
   end
 
@@ -35,11 +36,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.id = params[:id]
     if params[:back]
       render :edit
     else
-      if @user.save
+      if @user.update(user_params)
         redirect_to user_path(@user.id), notice: "ユーザー編集完了しました！"
       else
         render :edit

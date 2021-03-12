@@ -6,8 +6,8 @@
   <%= f.hidden_field :password_confirmation %>
   <p>名前:<%= @user.name %></p>
   <p>メールアドレス:<%= @user.email %></p>
-  <p>パスワード:<%= @user.password %></p>
-  <p>パスワード確認用:<%= @user.password_confirmation %></p>
+  <p>パスワード : ＊＊＊＊＊＊＊＊</p>
+  <p>パスワード確認用 : ＊＊＊＊＊＊＊＊</p>
   <%= f.submit "登録する" %>
   <%= f.submit "戻る", name: 'back' %>
 <% end %>

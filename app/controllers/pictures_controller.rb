@@ -18,7 +18,7 @@ class PicturesController < ApplicationController
     if @picture.id?
       render :edit and return if @picture.invalid?
     else
-      render :new and return if @picture.invalid?
+      render :new if @picture.invalid?
     end
   end
 
