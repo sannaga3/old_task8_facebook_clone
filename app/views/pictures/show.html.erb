@@ -1,4 +1,9 @@
-<h3>ブログ詳細</h3>
+<h3>投稿詳細ページ</h3>
 <br>
-<%= @picture.content %>
-<%= link_to "編集", new_picture_path %>
+<p>名前 : <%= @picture.user.name %></p> 
+<p>投稿番号 : <%= @picture.id %></p> 
+<p>コメント : <%= @picture.content %></p>
+<br>
+<br>
+<%= link_to "編集", edit_picture_path %>
+<%= link_to "一覧に戻る", pictures_path %>

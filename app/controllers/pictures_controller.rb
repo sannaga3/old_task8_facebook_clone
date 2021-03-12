@@ -13,7 +13,7 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = params[:id] ? Picture.find(param[:id]) : Picture.new(picture_params)
+    @picture = params[:id] ? Picture.find(params[:id]) : Picture.new(picture_params)
     @picture.user_id = current_user.id
     if @picture.id?
       render :edit and return if @picture.invalid?
@@ -42,6 +42,15 @@ class PicturesController < ApplicationController
   end
 
   def update
+    if params[:back]
+      render :edit
+    else
+      if @picture.save
+        redirect_to picture_path(@picture.id), notice: "編集しました"
+      else
+        render :edit
+      end
+    end
   end
 
   private
@@ -50,6 +59,6 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:content)
+    params.require(:picture).permit(:content, :id)
   end
 end

@@ -1,11 +1,20 @@
-<%= form_with(model: @picture, local: true ,url: pictures_path) do |f| %>
+<h3>内容確認ページ</h3>
+<%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
   <div class="picture_wrapper">
     <div class="field">
+    <% if @picture.id %>
+      <p>投稿番号 : <%= @picture.id %></p> 
+    <% end %>
+      <p>名前 : <%= @picture.user.name %></p> 
       <%= f.hidden_field :content %>
-      <p>コメント: <br><%= @picture.content %></p>
+      <p>コメント : <%= @picture.content %></p>
     </div> 
     <div class="picture_button">
-      <%= f.submit value="投稿" %>
+      <% if @picture.id %>
+        <%= f.submit value="編集" %>
+      <% else %>
+        <%= f.submit value="投稿" %>
+      <% end %>
       <%= link_to "一覧に戻る", pictures_path %>
     </div>
   </div>
