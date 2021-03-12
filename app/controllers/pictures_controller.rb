@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
+    @user_id = current_user.id
   end
 
   def new
@@ -22,7 +23,16 @@ class PicturesController < ApplicationController
   end
 
   def create
-
+    @picture = current_user.pictures.build(picture_params)
+    if params[:back]
+      render :new
+    else
+      if @picture.save
+        redirect_to pictures_path, notice: "投稿しました"
+      else
+        render :new
+      end
+    end
   end
 
   def edit

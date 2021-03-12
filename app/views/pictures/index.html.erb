@@ -1,3 +1,12 @@
-<h1>Pictures#index</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
+<h3>みんなの投稿</h3>
+<% @pictures.each do |p| %>
+  <%= p.user.name %>
+  <%= p.content %>
+  <% if p.user == current_user %>
+    <%= link_to "編集", new_picture_path %>
+    <%= link_to "削除", new_picture_path %>
+  <% end %>
+  <br>
+<% end %>
+<br>
 <%= link_to "投稿する", new_picture_path %>
