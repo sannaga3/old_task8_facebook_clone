@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
+  before_action :set_picture, only: [:edit, :show, :update,:destroy]
   def index
     @pictures = Picture.all
-    @user_id = current_user.id
   end
 
   def new
@@ -35,16 +35,20 @@ class PicturesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
   def update
   end
 
-  def show
+  private
+  def set_picture
+    @picture = Picture.find(params[:id])
   end
 
-  private
   def picture_params
     params.require(:picture).permit(:content)
   end

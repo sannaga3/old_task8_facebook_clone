@@ -3,6 +3,7 @@
   <%= p.user.name %>
   <%= p.content %>
   <% if p.user == current_user %>
+    <%= link_to "詳細", picture_path(p.id) %>
     <%= link_to "編集", new_picture_path %>
     <%= link_to "削除", new_picture_path %>
   <% end %>
