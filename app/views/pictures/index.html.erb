@@ -1,7 +1,11 @@
 <h3>みんなの投稿</h3>
 <% @pictures.each do |p| %>
-  <%= p.user.name %>
-  <%= p.content %>
+  <p>名前 : <%= p.user.name %></p> 
+  <p>コメント : <%= p.content %></p>
+  <% if p.image.url %>
+    <%= image_tag p.image.url %>
+  <% end %>
+  <br>
   <% if p.user == current_user %>
     <%= link_to "詳細", picture_path(p.id) %>
     <%= link_to "編集", edit_picture_path(p.id) %>

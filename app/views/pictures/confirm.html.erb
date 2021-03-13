@@ -8,14 +8,19 @@
       <p>名前 : <%= @picture.user.name %></p> 
       <%= f.hidden_field :content %>
       <p>コメント : <%= @picture.content %></p>
+      <p><strong>Image:</strong></p>
+      <%= f.hidden_field :image_cache %>
+      <%= image_tag @picture.image.url %>
     </div> 
     <div class="picture_button">
       <% if @picture.id %>
-        <%= f.submit value="編集" %>
+        <%= f.submit value="変更" %>
       <% else %>
         <%= f.submit value="投稿" %>
       <% end %>
-      <%= link_to "一覧に戻る", pictures_path %>
+      <%= f.submit "戻る", name: 'back' %>
     </div>
   </div>
 <% end %>
+<br>
+<%= button_to "一覧画面へ戻る", {controller: 'pictures', action: 'index'}, {method: :get} %>

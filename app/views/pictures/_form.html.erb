@@ -14,6 +14,14 @@
       <%= f.hidden_field :user %>
       <%= f.label :'コメント' %><br>
       <%= f.text_area :content %>
+      <div class="field">
+        <% if !@picture.id? %>
+          <%= f.file_field :image %>
+        <% end %>
+        <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+      <br>
     </div> 
     <div class="picture_button">
       <%= f.submit value="内容確認" %>
