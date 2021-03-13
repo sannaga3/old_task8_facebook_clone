@@ -19,7 +19,6 @@
       <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
     <% else %>
       <%= link_to "サインアップ", new_user_path %>
-      <%= link_to "投稿一覧", pictures_path %>
       <%= link_to "ログイン", new_session_path %>
     <% end %>
     <%= yield %>
