@@ -1,10 +1,30 @@
-<h3>ユーザー情報一覧</h3>
-<p>名前:<%= @user.name %></p>
-<p>メールアドレス:<%= @user.email %></p>
-<p>パスワード : ＊＊＊＊＊＊＊＊</p>
-<p>パスワード確認用 : ＊＊＊＊＊＊＊＊</p>
-<br>
-<%= link_to "投稿", new_picture_path %>
-<br>
-<%= link_to "編集", edit_user_path(@user.id) %>
-<%= link_to '退会', user_path(@user.id), method: :delete, data: { confirm: '本当に退会しますか？'} %>
+<div class="main_wrapper">
+  <h3>ユーザー情報一覧</h3>
+  <div class="table_wrapper">
+    <table>
+      <tbody>
+        <tr>
+          <td><p>名前:</p></td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td><p>メールアドレス:</p></td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td><p>パスワード : </p></td>
+          <td>＊＊＊＊＊＊＊＊</td>
+        </tr>
+        <tr>
+          <td><p>パスワード確認用 : </p></td>
+          <td>＊＊＊＊＊＊＊＊</td>
+        </tr>
+        <tr>
+          <td class="button"><%= link_to "投稿", new_picture_path, class: "btn btn-primary" %></td>
+          <td class="button"><%= link_to "編集", edit_user_path(@user.id), class: "btn btn-primary" %></td>
+          <td class="button"><%= link_to '退会', user_path(@user.id), method: :delete, data: { confirm: '本当に退会しますか？'}, class: "btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> 
