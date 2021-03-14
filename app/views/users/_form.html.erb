@@ -31,7 +31,10 @@
       </tbody>
     </table>
     <div class="button">
-      <%= f.submit "入力内容確認" %>
+      <%= f.submit "入力内容確認", class: "btn btn-primary #{'button_margin' if @user.id?}" %>
+      <% if @user.id? %>
+          <%= link_to '戻る', user_path(@user.id), class: "btn btn-primary button_margin" %>
+      <% end %>
     </div>
   </div>
 <% end %>
