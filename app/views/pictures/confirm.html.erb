@@ -2,10 +2,10 @@
   <h3>内容確認ページ</h3>
   <%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
     <div class="table_wrapper">
-      <div class="field">
-      <% if @picture.id %>
-        <p>投稿番号 : <%= @picture.id %></p> 
-      <% end %>
+      <div>
+        <% if @picture.id %>
+          <p>投稿番号 : <%= @picture.id %></p> 
+        <% end %>
         <p>名前 : <%= @picture.user.name %></p> 
         <%= f.hidden_field :content %>
         <p>コメント : <%= @picture.content %></p>
