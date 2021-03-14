@@ -14,7 +14,7 @@
     <p class="comment_label"><%= f.label :'コメント' %></p>
     <%= f.text_area :content %>
     <div>
-      <% if !@picture.id? %>
+      <% if !@picture.image? %>
         <%= f.file_field :image %>
       <% end %>
       <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
