@@ -1,5 +1,4 @@
-<%= form_with(model: @picture, local: true ,url: confirm_action_picture) do |f| %>
-  <% if @picture.errors.any? %>
+<% if @picture.errors.any? %>
   <div id="error_explanation">
     <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
     <ul>
@@ -9,23 +8,21 @@
     </ul>
   </div>
 <% end %>
-  <div class="picture_wrapper">
-    <div class="field">
-      <%= f.hidden_field :user %>
-      <%= f.label :'コメント' %><br>
-      <%= f.text_area :content %>
-      <div class="field">
-        <% if !@picture.id? %>
-          <%= f.file_field :image %>
-        <% end %>
-        <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-        <%= f.hidden_field :image_cache %>
-      </div>
-      <br>
-    </div> 
-    <div class="picture_button">
-      <%= f.submit value="内容確認" %>
-      <%= link_to "一覧に戻る", pictures_path %>
+<%= form_with(model: @picture, local: true ,url: confirm_action_picture) do |f| %>
+  <div class="table_wrapper">
+    <%= f.hidden_field :user %>
+    <p class="comment_label"><%= f.label :'コメント' %></p>
+    <%= f.text_area :content %>
+    <div>
+      <% if !@picture.id? %>
+        <%= f.file_field :image %>
+      <% end %>
+      <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+    <div class="button">
+      <%= f.submit "入力内容確認", class: "btn btn-primary button_margin" %>
+      <%= link_to "一覧に戻る", pictures_path, class: "btn btn-primary button_margin" %>
     </div>
   </div>
 <% end %>
