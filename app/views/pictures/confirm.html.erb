@@ -1,28 +1,31 @@
-<h3>内容確認ページ</h3>
-<%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
-  <div class="picture_wrapper">
-    <div class="field">
-    <% if @picture.id %>
-      <p>投稿番号 : <%= @picture.id %></p> 
-    <% end %>
-      <p>名前 : <%= @picture.user.name %></p> 
-      <%= f.hidden_field :content %>
-      <p>コメント : <%= @picture.content %></p>
-      <p>Image:</p>
-      <%= f.hidden_field :image_cache %>
-      <% if @picture.image? %>
-        <%= image_tag @picture.image.url %>
-      <% end %>
-    </div> 
-    <div class="picture_button">
+<div class="main_wrapper">
+  <h3>内容確認ページ</h3>
+  <%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
+    <div class="table_wrapper">
+      <div class="field">
       <% if @picture.id %>
-        <%= f.submit value="変更" %>
-      <% else %>
-        <%= f.submit value="投稿" %>
+        <p>投稿番号 : <%= @picture.id %></p> 
       <% end %>
-      <%= f.submit "戻る", name: 'back' %>
+        <p>名前 : <%= @picture.user.name %></p> 
+        <%= f.hidden_field :content %>
+        <p>コメント : <%= @picture.content %></p>
+        <p>Image:</p>
+        <%= f.hidden_field :image_cache %>
+        <% if @picture.image? %>
+          <%= image_tag @picture.image.url %>
+        <% end %>
+      </div> 
+      <div class="button">
+        <% if @picture.id %>
+          <%= f.submit "変更", class: "btn btn-primary button_margin" %>
+        <% else %>
+          <%= f.submit "投稿", class: "btn btn-primary button_margin"  %>
+        <% end %>
+        <%= f.submit "戻る", name: 'back', class: "btn btn-primary button_margin" %>
+      </div>
     </div>
+  <% end %>
+  <div class="index_button">
+    <%= button_to "一覧画面へ戻る", {controller: 'pictures', action: 'index'}, {method: :get, class: "btn btn-primary button_margin" } %>
   </div>
-<% end %>
-<br>
-<%= button_to "一覧画面へ戻る", {controller: 'pictures', action: 'index'}, {method: :get} %>
+</div>

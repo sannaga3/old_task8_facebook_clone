@@ -4,8 +4,10 @@
   <p>名前 : <%= @picture.user.name %></p> 
   <p>投稿番号 : <%= @picture.id %></p> 
   <p>コメント : <%= @picture.content %></p>
-  <p><strong>Image:</strong></p>
-  <%= image_tag @picture.image.url %>
+  <% if @picture.image? %>
+    <p>Image: </p>
+    <%= image_tag @picture.image.url %>
+  <% end %>
   <br>
   <br>
   <%= link_to "編集", edit_picture_path %>
