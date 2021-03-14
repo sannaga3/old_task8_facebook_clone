@@ -1,3 +1,58 @@
-// Place all the styles related to the pictures controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.page_title {
+  font-size: 4rem;
+  color: #9dcefc;
+  text-shadow: 2px 2px #89a2f3;
+}
+.pictures_wrapper {
+  width: 70%;
+  margin: 0 auto;
+  background-color: #97c7ee;
+  box-shadow: 10px 10px 10px 5px rgb(138, 182, 218);
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: stretch;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.picture_list {
+  width: 80%;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px 2px rgb(178, 178, 184);
+  margin: 0 10% 10px 10%;
+  padding-left: 5px;
+}
+.picture_tag {
+  display: block;
+  width: 45px;
+  background-color: rgb(218, 218, 226);
+  box-shadow: 0 1px 1px 1px rgb(178, 178, 184);
+}
+.picture {
+  width: 97%;
+  box-shadow: 2px 2px 1px 1px rgb(178, 178, 184);
+  margin-bottom: 7px;
+}
+.button_item {
+  font-size: 0.5rem;
+  padding: 4px 8px;
+  margin: 6px 5px;
+  box-shadow: 1px 1px 1px 1px rgb(178, 178, 184);
+}
+.fixed_button_parents {
+  position: relative;
+}
+.fixed_button {
+  display: block;
+  background-color: #6782d4;
+  box-shadow: 1px 1px 1px 1px rgb(178, 178, 184);
+  border-radius: 10px;
+  color: #f5f4f7;
+  text-shadow: 2px 2px #a4b0b9;
+  position: fixed;
+  bottom: 200px; 
+  right: 10px;
+  padding: 6px 15px;
+}

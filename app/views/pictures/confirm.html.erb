@@ -8,9 +8,11 @@
       <p>名前 : <%= @picture.user.name %></p> 
       <%= f.hidden_field :content %>
       <p>コメント : <%= @picture.content %></p>
-      <p><strong>Image:</strong></p>
+      <p>Image:</p>
       <%= f.hidden_field :image_cache %>
-      <%= image_tag @picture.image.url %>
+      <% if @picture.image? %>
+        <%= image_tag @picture.image.url %>
+      <% end %>
     </div> 
     <div class="picture_button">
       <% if @picture.id %>

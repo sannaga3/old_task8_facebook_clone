@@ -1,17 +1,32 @@
-<h3>みんなの投稿</h3>
-<% @pictures.each do |p| %>
-  <p>名前 : <%= p.user.name %></p> 
-  <p>コメント : <%= p.content %></p>
-  <% if p.image.url %>
-    <%= image_tag p.image.url %>
-  <% end %>
-  <br>
-  <% if p.user == current_user %>
-    <%= link_to "詳細", picture_path(p.id) %>
-    <%= link_to "編集", edit_picture_path(p.id) %>
-    <%= link_to "削除", picture_path(p.id), method: :delete, data: { confirm: '本当に削除しますか？'} %>
-  <% end %>
-  <br>
-<% end %>
+<div class="main_wrapper fixex_button_parents">
+  <h3 class="page_title">みんなの投稿</h3>
+  <div class="table_wrapper pictures_wrapper">
+    <% @pictures.each do |p| %>
+      <div class="picture_list">
+        <tr class="picture_content">
+          <td><p class="picture_content_item"> 名前 : <%= p.user.name %></p></td>
+          <td><p class="picture_content_item"> コメント : <%= p.content %></p></td>
+          <% if p.image.url %>
+            <td class="picture_content_item"><p class="picture_tag">picture</p></td>
+            <td>
+              <%= link_to p.image.url, 'data-lightbox': p.image do %>
+                <%= image_tag p.image.url, class: "picture" if p.image? %>
+              <% end %>
+            </td>
+          <% end %>  
+          <div>
+            <% if p.user == current_user %>
+              <%= link_to "詳細", picture_path(p.id), class: "btn btn-primary button_item" %>
+              <%= link_to "編集", edit_picture_path(p.id), class: "btn btn-primary button_item" %>
+              <%= link_to "削除", picture_path(p.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-primary button_item" %>
+            <% end %>
+          </div>
+        </tr>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 <br>
-<%= link_to "投稿する", new_picture_path %>
+<%= link_to "投稿する", new_picture_path, class: "fixed_button" %>
