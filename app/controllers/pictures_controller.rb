@@ -13,7 +13,8 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = params[:id] ? Picture.find(params[:id]) : Picture.new(picture_params)
+    @picture = Picture.new(picture_params)
+    @picture.id = params[:id]
     @picture.user_id = current_user.id
     if @picture.id?
       render :edit and return if @picture.invalid?
@@ -45,7 +46,7 @@ class PicturesController < ApplicationController
     if params[:back]
       render :edit
     else
-      if @picture.save
+      if @picture.update(picture_params)
         redirect_to picture_path(@picture.id), notice: "編集しました"
       else
         render :edit
